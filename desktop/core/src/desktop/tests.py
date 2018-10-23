@@ -1387,6 +1387,7 @@ def test_collect_validation_messages_default():
     os.remove(configspec.name)
 
 def test_collect_validation_messages_extras():
+  LOG = logging.getLogger(__name__)
   try:
     # Generate the spec file
     configspec = generate_configspec()
@@ -1447,6 +1448,7 @@ def test_db_migrations_sqlite():
       del DATABASES[name]
 
 def test_db_migrations_mysql():
+  LOG = logging.getLogger(__name__)
   if desktop.conf.DATABASE.ENGINE.get().find('mysql') < 0:
     raise SkipTest
   versions = ['5_' + str(i) for i in range(7, 16)]
